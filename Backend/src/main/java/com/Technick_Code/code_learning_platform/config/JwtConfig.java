@@ -67,5 +67,4 @@ public class JwtConfig {
         return true;
     }
 
-
 }
