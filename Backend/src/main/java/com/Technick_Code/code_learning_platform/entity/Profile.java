@@ -14,7 +14,8 @@ import lombok.Data;
 @Table(name = "profiles")
 public class Profile {
 
-    // uuid kyuki auth.users(id) supabase ka id type uuid hota hai jo woh khud handle karta hai 
+    // uuid kyuki auth.users(id) supabase ka id type uuid hota hai
+    // generatedValue nahi lagaya kyuki supabase khud create karega
     @Id
     private UUID id;
 
