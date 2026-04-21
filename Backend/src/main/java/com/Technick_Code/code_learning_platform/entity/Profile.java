@@ -2,11 +2,10 @@ package com.Technick_Code.code_learning_platform.entity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import java.time.LocalDateTime;
+import java.util.UUID;
 import java.time.LocalDate;
 import lombok.Data;
 
@@ -15,9 +14,9 @@ import lombok.Data;
 @Table(name = "profiles")
 public class Profile {
 
+    // uuid kyuki auth.users(id) supabase ka id type uuid hota hai jo woh khud handle karta hai 
     @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
-    private String id;
+    private UUID id;
 
     @Column(nullable = false, unique = true)
     private String username;
