@@ -13,6 +13,7 @@ import lombok.Data;
 @Table(name = "companies")
 public class Company {
 
+    // auto-increment using generation type identity
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
@@ -20,7 +21,7 @@ public class Company {
     @Column(nullable = false, unique = true)
     private String name;
 
-    @Column(columnDefinition = "TEXT")
+    @Column(columnDefinition = "TEXT", name = "logo_url")
     private String logoUrl;
 
 }
