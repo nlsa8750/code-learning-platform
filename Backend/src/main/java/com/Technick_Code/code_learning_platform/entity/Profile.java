@@ -8,21 +8,26 @@ import java.time.LocalDateTime;
 import java.util.UUID;
 import java.time.LocalDate;
 import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.AllArgsConstructor;
 
 @Data
 @Entity
 @Table(name = "profiles")
+@NoArgsConstructor // taaki jpa jab object create karta hai toh iski zaroorat pade, json se object main bhi kaam aata hai, request and response body main zaroori
+@AllArgsConstructor // yeh toh jab mereko manually object karna ho
 public class Profile {
 
     // uuid kyuki auth.users(id) supabase ka id type uuid hota hai
     // generatedValue nahi lagaya kyuki supabase khud create karega
     @Id
+    @Column(columnDefinition = "uuid")
     private UUID id;
 
-    @Column(nullable = false, unique = true)
+    @Column(nullable = false, unique = true, length = 50)
     private String username;
 
-    @Column(name = "full_name")
+    @Column(name = "full_name", length = 100)
     private String fullName;
 
     @Column(columnDefinition = "TEXT", name = "avatar_url")
