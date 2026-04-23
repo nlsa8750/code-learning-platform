@@ -1,28 +1,32 @@
 package com.Technick_Code.code_learning_platform.entity;
 
-import java.time.LocalDateTime;
+import java.time.OffsetDateTime;
 
 // jpa manage karta hai relational database java app main
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 // apne aap getters , setters bana dega 
 @Data
 @Entity
 @Table(name = "problems")
+@NoArgsConstructor
+@AllArgsConstructor
 public class Problem {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Integer id;
 
-    @Column(nullable = false, unique = true)
+    @Column(nullable = false, unique = true, length = 300)
     private String title;
 
-    @Column(nullable = false, unique = true)
+    @Column(nullable = false, unique = true, length = 300)
     private String slug;
 
-    @Column(nullable = false)
+    @Column(nullable = false, length = 10)
     private String difficulty;
 
     // name = supabase k columns se match k liye
@@ -41,16 +45,16 @@ public class Problem {
     @Column(columnDefinition = "TEXT", name = "codestudio_url")
     private String codestudioUrl;
 
-    @Column(name = "primary_platform")
-    private String primaryPlatform;
+    @Column(name = "primary_platform", length = 20)
+    private String primaryPlatform = "leetcode";
 
     // boolean nahi Boolean kyuki nullable hai
-    private Boolean ispremium;
+    private Boolean ispremium = false;
 
     @Column(name = "created_at")
-    private LocalDateTime createdAt;
+    private OffsetDateTime createdAt;
 
     @Column(name = "updated_at")
-    private LocalDateTime updatedAt;
+    private OffsetDateTime updatedAt;
 
 }
